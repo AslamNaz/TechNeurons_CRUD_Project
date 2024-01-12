@@ -10,7 +10,7 @@
 {
     @Html.AntiForgeryToken()
 
-
+    @Html.HiddenFor(model => model.EmployeeID)
 
     <div class="form-group">
         @Html.LabelFor(model => model.Name, new { @class = "control-label" })
