@@ -1,0 +1,113 @@
+﻿@model IEnumerable<CRED.Models.Employee>
+
+@{
+    ViewBag.Title = "Employee List";
+}
+
+<style>
+    body {
+        background-image: url('NewBGImage.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        color: #fff;
+        font-family: Arial, sans-serif;
+    }
+
+    .container {
+        padding: 20px;
+        background-color: rgba(0, 0, 0, 0.7);
+        border-radius: 10px;
+        margin-top: 50px;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+    }
+
+    th, td {
+        padding: 12px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+
+    th {
+        background-color: #333;
+    }
+
+    .action-links a {
+        margin-right: 10px;
+        color: #fff;
+        text-decoration: none;
+    }
+
+        .action-links a:hover {
+            text-decoration: underline;
+        }
+
+    .create-button {
+        margin-top: 20px;
+    }
+
+    .btn-primary {
+        background-color: #28a745;
+        color: #fff; 
+        border-color: #28a745;
+    }
+
+        .btn-primary:hover {
+            background-color: #218838; 
+            border-color: #218838;
+        }
+</style>
+
+<div class="container">
+    <h2>Employee List</h2>
+
+    <div class="create-button">
+        @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary" })
+    </div>
+
+    <table class="table">
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                Age
+            </th>
+            <th>
+                City
+            </th>
+            <th>
+                Gender
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Age)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.City)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Gender)
+                </td>
+                <td class="action-links">
+                    @Html.ActionLink("Edit", "Edit", new { id = item.EmployeeID }, new { @class = "btn btn-primary btn-sm" }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.EmployeeID }, new { @class = "btn btn-info btn-sm" }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.EmployeeID }, new { @class = "btn btn-danger btn-sm" })
+                </td>
+            </tr>
+        }
+    </table>
+</div>

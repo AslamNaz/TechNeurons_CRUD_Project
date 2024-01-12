@@ -1,0 +1,40 @@
+﻿@model CRED.Models.Employee
+
+@{
+    ViewBag.Title = "Employee Details";
+}
+
+<h2>Employee Details</h2>
+
+<style>
+    body {
+        background-color: black;
+        color: white;
+    }
+
+    .details {
+        background-color: grey;
+        padding: 20px;
+        border-radius: 5px;
+    }
+</style>
+
+<div>
+    <h4>Employee ID: @Model.EmployeeID</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>Name</dt>
+        <dd>@Html.DisplayFor(model => model.Name)</dd>
+        <dt>Age</dt>
+        <dd>@Html.DisplayFor(model => model.Age)</dd>
+        <dt>City</dt>
+        <dd>@Html.DisplayFor(model => model.City)</dd>
+        <dt>Gender</dt>
+        <dd>@Html.DisplayFor(model => model.Gender)</dd>
+    </dl>
+
+</div>
+
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>
