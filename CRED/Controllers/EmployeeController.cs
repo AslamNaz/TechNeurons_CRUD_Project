@@ -93,27 +93,10 @@ namespace CRED.Controllers
         {
             if (ModelState.IsValid)
             {
-                try
-                {
-                    db.Entry(employee).State = EntityState.Modified;
-                    db.SaveChanges();
-                    return RedirectToAction("Index");
-                }
-                catch (DbUpdateConcurrencyException ex)
-                {
-                    var entry = ex.Entries.Single();
-                    var databaseValues = entry.GetDatabaseValues();
-                    if (databaseValues == null)
-                    {
-                        
-                        ModelState.AddModelError(string.Empty, "Changes Not Saved");
-                    }
-                    else
-                    {
-                        entry.OriginalValues.SetValues(databaseValues);
-                        db.SaveChanges();
-                    }
-                }
+                db.Entry(employee).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+                
             }
             return View(employee);
         }
